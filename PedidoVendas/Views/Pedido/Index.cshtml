@@ -1,0 +1,12 @@
+﻿@model PedidoViewModel
+
+
+<h1>Detalhes</h1>
+
+<p>Nome: @Model.ItemPedido.Nome</p>
+
+@foreach(var produto in Model.ItemPedido.ItensDoPedido)
+{
+    <p>@produto.Produto.Nome</p>
+    <p>@produto.Produto.Preco</p>
+}
