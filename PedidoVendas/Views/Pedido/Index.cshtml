@@ -1,12 +1,28 @@
 ﻿@model PedidoViewModel
 
+<h1>Nome: @Model.ItemPedido.Nome</h1>
 
-<h1>Detalhes</h1>
-
-<p>Nome: @Model.ItemPedido.Nome</p>
-
-@foreach(var produto in Model.ItemPedido.ItensDoPedido)
+@if (Model.ItemPedido.ItensDoPedido != null)
 {
-    <p>@produto.Produto.Nome</p>
-    <p>@produto.Produto.Preco</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome do Produto</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produto in Model.ItemPedido.ItensDoPedido)
+            {
+                <tr>
+                    <td>@produto.Produto.Nome</td>
+                    <td>@produto.Produto.Preco</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhum item encontrado no pedido.</p>
 }
